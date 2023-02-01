@@ -10,16 +10,30 @@
     <p>Выбор блюда</p>
     <p><a th:href="@{/}" th:text="'Главная страница'"></a></p>
 </div>
+
+<form th:action="@{/dishes_table}" th:object="${dishesCategories}" method="post">
+
+    <select th:field="*{name}" required>
+        <option value="">Select</option>
+        <option value="BREAKFAST">Завтрак</option>
+        <option value="SNACK">Перекус</option>
+        <option value="LAUNCH">Обед</option>
+        <option value="AFTERNOONSNACK">Полдник</option>
+        <option value="SUPPER">Ужин</option>
+    </select> <br/><br/>
+    <button type="submit">Добавить</button>
+    <span th:utext="${successMessage}"></span>
+    <div th:if="${bindingResult!=null && bindingResult.getAllErrors()!=null}">
+        <ul th:each="data : ${bindingResult.getAllErrors()}">
+            <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+        </ul>
+    </div>
+</form>
+
+<p> </p>
+
 <form th:action="@{/dishes_table}" th:object="${dishes}" method="post">
 
-    <!--<select th:field="*{dish_category}" required>
-        <option value="">Select</option>
-        <option value="Завтрак">Завтрак</option>
-        <option value="Перекус">Перекус</option>
-        <option value="Обед">Обед</option>
-        <option value="Полдник">Полдник</option>
-        <option value="Ужин">Ужин</option>
-    </select> <br/><br/>-->
     <select th:field="*{dishName}" required>
         <option value="">Select</option>
         <option value="RICE">Рис</option>
