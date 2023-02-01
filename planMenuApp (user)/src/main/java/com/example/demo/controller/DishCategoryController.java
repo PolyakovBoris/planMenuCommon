@@ -1,5 +1,4 @@
-/*
-package com.example.demo.controller;
+/*package com.example.demo.controller;
 
 import com.example.demo.model.DishesCategories;
 import com.example.demo.repository.DishCategoriesRepository;
@@ -16,17 +15,12 @@ public class DishCategoryController {
     @Autowired
     private DishCategoriesRepository dishCategoriesRepository;
 
-    @GetMapping(value = {"/dishes_table"})
-    public String dishCategoryList(Model model) {
-        model.addAttribute("dishesCategories", new DishesCategories());
-        return "dishes/dishes_table";
-    }
 
     @PostMapping(value = {"/dishes_table"})
-    public String dishCategoryList(@ModelAttribute DishesCategories dishesCategories, Model model) {
+    public String dishCategoriesList(@ModelAttribute DishesCategories dishesCategories, Model model) {
         model.addAttribute("dishesCategories", dishesCategories);
-//        dishCategoriesRepository.save(dishesCategories);
+        dishCategoriesRepository.save(dishesCategories);
         return "/homepage";
     }
-}
-*/
+
+}*/

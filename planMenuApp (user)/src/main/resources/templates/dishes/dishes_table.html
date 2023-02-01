@@ -33,7 +33,6 @@
 <p> </p>
 
 <form th:action="@{/dishes_table}" th:object="${dishes}" method="post">
-
     <select th:field="*{dishName}" required>
         <option value="">Select</option>
         <option value="RICE">Рис</option>

@@ -6,19 +6,17 @@ import javax.persistence.*;
 @Table(name = "dishesCategories")
 public class DishesCategories {
 
-//    @SequenceGenerator(
-//            name = "dishes_category_sequence",
-//            sequenceName = "dishes_category_sequence",
-//            allocationSize = 1
-//    )
+    @SequenceGenerator(
+            name = "dishes_category_sequence",
+            sequenceName = "dishes_category_sequence",
+            allocationSize = 1
+    )
     @Id
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE
-//            generator = "dishes_category_sequence"
+            strategy = GenerationType.SEQUENCE,
+            generator = "dishes_category_sequence"
     )
     private Long id;
-
-
 
     @Enumerated(EnumType.STRING)
     @Column(name = "name")
@@ -31,14 +29,10 @@ public class DishesCategories {
         this.id = id;
     }
 
-//    public DishCategory getDishCategory() {
-//        return name;
-//    }
     public DishCategory getName() {
         return name;
     }
-
-    public void setDishCategory(DishCategory name) {
+    public void setName(DishCategory name) {
         this.name = name;
     }
 }
