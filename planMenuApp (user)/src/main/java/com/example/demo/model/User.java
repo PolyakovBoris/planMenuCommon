@@ -3,6 +3,7 @@ package com.example.demo.model;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,9 +37,9 @@ public class User implements UserDetails  {
     @Column(name = "first_name")
     private String firstName;
 
-    @NotNull(message = "Last Name cannot be empty")
-    @Column(name = "last_name")
-    private String lastName;
+//    @NotNull(message = "Last Name cannot be empty")
+//    @Column(name = "last_name")
+//    private String lastName;
 
     @NotNull(message = "Email cannot be empty")
     @Email(message = "Please enter a valid email address")
@@ -50,10 +51,44 @@ public class User implements UserDetails  {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "mobile", unique = true)
-    @Length(min = 10, message = "Password should be at least 10 number long")
-    private String mobile;
+    @NotNull(message = "Password cannot be empty")
+    @Length(min = 7, message = "Password should be at least 7 characters long")
+    @Column(name = "confirmPassword")
+    private String confirmPassword;
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    @Column(name = "sex")
+    private String sex;
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Column(name = "age")
+    private int age;
+
+//    @Column(name = "mobile", unique = true)
+//    @Length(min = 10, message = "Password should be at least 10 number long")
+//    private String mobile;
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
@@ -117,9 +152,9 @@ public class User implements UserDetails  {
     public String getFirstName() { return firstName; }
     public void setFirstName(String firstName) { this.firstName = firstName; }
 
-    public String getMobile() { return mobile; }
-    public void setMobile(String mobile) { this.mobile = mobile; }
+//    public String getMobile() { return mobile; }
+//    public void setMobile(String mobile) { this.mobile = mobile; }
 
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
+//    public String getLastName() { return lastName; }
+//    public void setLastName(String lastName) { this.lastName = lastName; }
 }

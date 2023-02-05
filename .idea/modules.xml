@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/menu.iml" filepath="$PROJECT_DIR$/.idea/menu.iml" />
       <module fileurl="file://$PROJECT_DIR$/planMenuApp (user)/planMenu.iml" filepath="$PROJECT_DIR$/planMenuApp (user)/planMenu.iml" />
-      <module fileurl="file://$PROJECT_DIR$/planMenuApp (admin_user)/planMenu (1).iml" filepath="$PROJECT_DIR$/planMenuApp (admin_user)/planMenu (1).iml" />
     </modules>
   </component>
 </project>

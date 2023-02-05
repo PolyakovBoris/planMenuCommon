@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.*;
 public class DishController {
     @Autowired
     private DishesRepository dishesRepository;
+    @Autowired
     private DishCategoriesRepository dishCategoriesRepository;
-
-    public DishController(DishCategoriesRepository dishCategoriesRepository) {
-        this.dishCategoriesRepository = dishCategoriesRepository;
-    }
 
     @GetMapping(value = {"/dishes_table"})
     public String dishList(Model model){
@@ -26,12 +23,17 @@ public class DishController {
         return "dishes/dishes_table";
     }
     @PostMapping(value = {"/dishes_table"})
-    public String dishList(@ModelAttribute Dishes dishes, DishesCategories dishesCategories, Model model){
+    public String dishList(@ModelAttribute Dishes dishes,  Model model){
         model.addAttribute("dishes", dishes);
         dishesRepository.save(dishes);
-        model.addAttribute("dishes", dishes);
-        model.addAttribute("dishesCategories", dishesCategories);
-        dishCategoriesRepository.save(dishesCategories);
+//        model.addAttribute("dishesCategories", dishesCategories);
+//        dishesCategories.save(dishesCategories);
         return "/homepage";
     }
+//    @PostMapping(value = {"/dishes_table"})
+//    public String dishesCategoriesList(@ModelAttribute DishesCategories dishesCategories, Model model){
+//        model.addAttribute("dishesCategories", dishesCategories);
+//        dishCategoriesRepository.save(dishesCategories);
+//        return "/homepage";
+//    }
 }

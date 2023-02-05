@@ -39,15 +39,15 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             userExists = true;
             message = "Email Already Present!";
         }
-        Optional<User> existingUserMobile = userRepository.findByMobile(user.getMobile());
-        if(existingUserMobile.isPresent()){
-            userExists = true;
-            message = "Mobile Number Already Present!";
-        }
-        if (existingUserEmail.isPresent() && existingUserMobile.isPresent()) {
-            message = "Email and Mobile Number Both Already Present!";
-        }
-        System.out.println("existingUserEmail.isPresent() - "+existingUserEmail.isPresent()+"existingUserMobile.isPresent() - "+existingUserMobile.isPresent());
+//        Optional<User> existingUserMobile = userRepository.findByMobile(user.getMobile());
+//        if(existingUserMobile.isPresent()){
+//            userExists = true;
+//            message = "Mobile Number Already Present!";
+//        }
+//        if (existingUserEmail.isPresent() && existingUserMobile.isPresent()) {
+//            message = "Email and Mobile Number Both Already Present!";
+//        }
+        System.out.println("existingUserEmail.isPresent() - "+existingUserEmail.isPresent()); /*+"existingUserMobile.isPresent() - "+existingUserMobile.isPresent());*/
         return Arrays.asList(userExists, message);
     }
 

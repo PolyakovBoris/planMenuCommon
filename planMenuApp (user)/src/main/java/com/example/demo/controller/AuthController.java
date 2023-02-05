@@ -30,6 +30,13 @@ public class AuthController {
 
     @RequestMapping(value = {"/register"}, method = RequestMethod.POST)
     public String registerUser(Model model, @Valid User user, BindingResult bindingResult){
+        if (user.getPassword() == user.getConfirmPassword()){
+            System.out.println(" пароль не подтврежден ");
+            model.addAttribute("successMessage", "пароль не подтврежден");
+            return "auth/register";
+        }
+        System.out.println("введен возраст");
+        System.out.println(user.getAge());
         if(bindingResult.hasErrors()){
             model.addAttribute("successMessage", "User registered successfully!");
             model.addAttribute("bindingResult", bindingResult);
@@ -40,7 +47,6 @@ public class AuthController {
             model.addAttribute("successMessage", userPresentObj.get(1));
             return "auth/register";
         }
-
         userService.saveUser(user);
         model.addAttribute("successMessage", "User registered successfully!");
 
